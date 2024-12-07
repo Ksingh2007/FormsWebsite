@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h2 id="there">Form!</h2>
+    <style>
+        #error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body> 
+    <div id="error"></div>
+    <form id="myForm" action="https://formsubmit.co/kwaraichs@outlook.com" method="post" enctype="text/plain">
+        <!--submits form using https://formsubmit.co to email address-->
+        <div>
+            <label for="ftitle">Title: </label>
+
+            <label>Mr</label>
+            <input type="radio" name="ftitle" value="Mr" required>
+
+            <label>Mrs</label>
+            <input type="radio" name="ftitle" value="Mrs" required>
+
+            <label>Other</label>
+            <input type="radio" name="ftitle" value="Other" required>
+        </div>
+        <br>
+        <div>
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" placeholder="John" required>
+        </div>
+        <br>
+        <div>
+            <label for="fsurname">Last Name:</label>
+            <input type="text" id="fsurname" name="fsurname" placeholder="Doe" required>
+        </div>
+        <br>
+        <div>
+            <label for="femail">Email:</label>
+            <input type="email" id="femail" name="femail" placeholder="johndoe@gmail.com" required>
+        </div>
+        <br>
+        <div>
+            <label for="fnum">Phone Number:</label>
+            <input type="tel" id="fnum" name="fnum" placeholder="01234567890" required pattern="[0-9]{10,15}" title="Please enter a valid phone number (10-15 digits)">
+        </div>
+        <br>
+        <div>
+            <label for="fmessage">Message:</label>
+            <input type="text" id="fmessage" name="fmessage" placeholder="Hello World!">
+        </div>
+        <br>
+        <div>
+            <label for="fagree">Agree to our Terms and Conditions to continue:</label>
+            <input type="checkbox" id="fagree" name="fagree">
+            <br>
+            <a href="https://youtu.be/xvFZjo5PgG0" >Click Here for the Terms and Conditions</a>
+        </div>
+        <br>
+        <div>
+            <input type="reset">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            var errorDiv = document.getElementById("error");
+            errorDiv.textContent = ""; // Clear any previous error messages
+
+            // Check if the Terms and Conditions checkbox is checked
+            var agreeCheckbox = document.getElementById("fagree");
+            if (!agreeCheckbox.checked) {
+                event.preventDefault(); // Prevent form submission
+                errorDiv.textContent = "You must agree to the Terms and Conditions.";
+            }
+
+            // Phone number validation
+            var phoneNumber = document.getElementById("fnum").value;
+            var phonePattern = /^[0-9]{10,15}$/; // Only allows digits, length between 10 to 15 digits
+
+            if (!phonePattern.test(phoneNumber)) {
+                event.preventDefault(); // Prevent form submission
+                errorDiv.textContent = "Please enter a valid phone number (10-15 digits).";/
+            }
+        });
+    </script>
+</body>
+</html>
