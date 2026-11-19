@@ -1,0 +1,11 @@
+#error {
+    color: red;
+    margin-top: 10px;
+}
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
