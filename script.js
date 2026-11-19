@@ -1,3 +1,4 @@
+//v0.1
 document.getElementById("myForm").addEventListener("submit", function(event) {
     var errorDiv = document.getElementById("error");
     errorDiv.textContent = ""; // Clear any previous error messages
